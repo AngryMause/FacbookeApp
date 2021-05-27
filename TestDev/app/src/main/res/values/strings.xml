@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TestDev</string>
+    <string name="hint_george_call_me">George: Call me</string>
+    <string name="hint_whatsapp">Whatsapp</string>
+    <string name="facebook_app_id">1063977214010960</string> <string name="fb_login_protocol_scheme">fb1063977214010960</string>
+
+
+
+
+</resources>
