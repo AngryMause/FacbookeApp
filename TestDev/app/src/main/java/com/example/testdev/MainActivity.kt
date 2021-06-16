@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
     private val date: String = SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(Date())
     private var massage: String = "George: Hi"
     private val appName: String = "Facebook"
-    private var userName: String=""
-    private lateinit var callbackManager:CallbackManager
-    lateinit var  loginButton:LoginButton
+    private var userName: String = ""
+    private lateinit var callbackManager: CallbackManager
+    lateinit var loginButton: LoginButton
 
 
     @SuppressLint("SimpleDateFormat")
@@ -36,33 +36,32 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val accessToken = AccessToken.getCurrentAccessToken()
 
-
-        loginButton=fc_login_btn
+        loginButton = fc_login_btn
         callbackManager = CallbackManager.Factory.create()
-       loginButton.registerCallback(callbackManager,
+        loginButton.registerCallback(callbackManager,
             object : FacebookCallback<LoginResult?> {
                 override fun onSuccess(loginResult: LoginResult?) {
+//                    tv_service_name.text=accessToken.userId.toString()
+                    Toast.makeText(this@MainActivity,accessToken.userId.toString(),Toast.LENGTH_SHORT).show()
 
                 }
 
                 override fun onCancel() {
-                    // App code
+                    Toast.makeText(this@MainActivity,"loh",Toast.LENGTH_SHORT).show()
+
                 }
 
                 override fun onError(exception: FacebookException) {
-                    Toast.makeText(this@MainActivity,"No internet connection ",Toast.LENGTH_LONG).show()
+
                 }
             })
 
-
-
-
-
-
         myAdapter = MyAdapter(
-            mutableListOf(MassageModel(
-                R.drawable.ic_facbook,appName, massage, time, date,
-            ))
+            mutableListOf(
+                MassageModel(
+                    R.drawable.ic_facbook, appName, massage, time, date,
+                )
+            )
 
 
         )
@@ -89,10 +88,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        callbackManager.onActivityResult(requestCode, resultCode, data)
-        super.onActivityResult(requestCode, resultCode, data)
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        callbackManager.onActivityResult(requestCode, resultCode, data)
+//        super.onActivityResult(requestCode, resultCode, data)
+//    }
+
+
 
 
 }
